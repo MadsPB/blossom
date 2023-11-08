@@ -82,7 +82,16 @@ user sessions stored in redis
 ## Documentation:
 
 ### Frontend design:
-[figma](https://www.figma.com/file/WIwDhNRCpPwwNjNXT1EQd6/Skills-and-projects?type=design&node-id=0-1&mode=design&t=JtvvlM3tXYnSzmjQ-0)
+
+[figma design](https://www.figma.com/file/WIwDhNRCpPwwNjNXT1EQd6/Skills-and-projects?type=design&node-id=0-1&mode=design&t=JtvvlM3tXYnSzmjQ-0)
+
+**create project**
+
+![alt text](./Design/createProject.png)
+
+**project dashboard**
+
+![alt text](./Design/projectDashBoard.png)
 
 ### Project api - SQL design
 
