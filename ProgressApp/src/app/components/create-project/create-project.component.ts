@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-project',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class CreateProjectComponent {
 
+  createProjectForm = new FormGroup({
+    titleControl: new FormControl('', Validators.required),
+    descriptionControl: new FormControl(''),
+  });
+
+  onSubmit()
+  {
+    console.log(this.createProjectForm.value);
+  }
 }

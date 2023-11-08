@@ -7,6 +7,7 @@ import { CreateProjectComponent } from './components/create-project/create-proje
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ThumbnailPickerComponent } from './components/thumbnail-picker/thumbnail-picker.component';
 import { ThumbnailPickerItemComponent } from './components/thumbnail-picker-item/thumbnail-picker-item.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ThumbnailPickerItemComponent } from './components/thumbnail-picker-item
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
