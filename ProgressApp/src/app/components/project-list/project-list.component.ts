@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ProjectApiService } from 'src/app/services/project-api.service';
 
 @Component({
   selector: 'app-project-list',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class ProjectListComponent {
 
+  constructor(private projectApi:ProjectApiService){}
   projects:any[] = [
     {
       "id": 1,
@@ -37,12 +39,9 @@ export class ProjectListComponent {
     }
   ];
 
- 
+  ngOnInit(){
+    this.projectApi.getProjects().subscribe(projects => this.projects = projects)
+  }
 
-}
 
-type Project = {
-  title:string,
-  image_url:string,
-  description:string,
 }

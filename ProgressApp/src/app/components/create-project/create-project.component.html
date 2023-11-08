@@ -8,7 +8,7 @@
   </label>
   <input type="text" placeholder="Add Title.."  formControlName="titleControl">
   <label>Select thumbnail</label>
-  <app-thumbnail-picker></app-thumbnail-picker>
+  <app-thumbnail-picker (imageSelected)="onImageSelected($event)"></app-thumbnail-picker>
   <label>Description</label>
   <textarea placeholder="Add Project Description.." formControlName="descriptionControl"></textarea>
   <button [disabled]="!createProjectForm.valid">Create</button>

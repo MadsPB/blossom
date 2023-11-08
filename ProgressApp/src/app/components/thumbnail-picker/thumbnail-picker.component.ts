@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Image } from 'src/app/interfaces/image';
 
 @Component({
   selector: 'app-thumbnail-picker',
@@ -8,15 +9,11 @@ import { Component } from '@angular/core';
 export class ThumbnailPickerComponent {
   thumbnailImages = [{id: 1, url:'../../../assets/thumbnailExample.png'},{id: 2, url:'../../../assets/thumbnailExample.png'},{id: 3, url:'../../../assets/thumbnailExample.png'},{id: 4, url:'../../../assets/thumbnailExample.png'}];
   selectedImage = this.thumbnailImages[0];
+  @Output() imageSelected = new EventEmitter<Image>();
 
   onSelect(image:Image)
   {
     this.selectedImage = image;
-    console.log(image)
+    this.imageSelected.emit(this.selectedImage);
   }
-}
-
-type Image = {
-  id:number,
-  url:string
 }
