@@ -8,6 +8,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ThumbnailPickerComponent } from './components/thumbnail-picker/thumbnail-picker.component';
 import { ThumbnailPickerItemComponent } from './components/thumbnail-picker-item/thumbnail-picker-item.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProjectDashboardComponent } from './components/project-dashboard/project-dashboard.component';
+import { ProjectListComponent } from './components/project-list/project-list.component';
+import { ProjectListItemComponent } from './components/project-list-item/project-list-item.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateProjectComponent,
     NavbarComponent,
     ThumbnailPickerComponent,
-    ThumbnailPickerItemComponent
+    ThumbnailPickerItemComponent,
+    ProjectDashboardComponent,
+    ProjectListComponent,
+    ProjectListItemComponent
   ],
   imports: [
     BrowserModule,
