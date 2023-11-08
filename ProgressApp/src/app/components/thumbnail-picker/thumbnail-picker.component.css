@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  overflow-x: scroll;
+}
+
+:host::-webkit-scrollbar {
+  display: none;
+}
+
+:host .selected {
+  background-color: orange;
+}

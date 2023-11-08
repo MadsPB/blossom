@@ -1,0 +1,3 @@
+
+<app-thumbnail-picker-item [class.selected]="image.id === selectedImage.id" *ngFor="let image of thumbnailImages" (click)="onSelect(image)" [thumbnail]="image.url"></app-thumbnail-picker-item>
+

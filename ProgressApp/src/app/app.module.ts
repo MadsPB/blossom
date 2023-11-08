@@ -5,12 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateProjectComponent } from './components/create-project/create-project.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ThumbnailPickerComponent } from './components/thumbnail-picker/thumbnail-picker.component';
+import { ThumbnailPickerItemComponent } from './components/thumbnail-picker-item/thumbnail-picker-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateProjectComponent,
-    NavbarComponent
+    NavbarComponent,
+    ThumbnailPickerComponent,
+    ThumbnailPickerItemComponent
   ],
   imports: [
     BrowserModule,
