@@ -77,3 +77,23 @@ Files stored in volume.
 Koa/express:
 user data stored in sql.
 user sessions stored in redis
+
+
+## Documentation:
+
+### Frontend design:
+[figma](https://www.figma.com/file/WIwDhNRCpPwwNjNXT1EQd6/Skills-and-projects?type=design&node-id=0-1&mode=design&t=JtvvlM3tXYnSzmjQ-0)
+
+### Project api - SQL design
+
+Project Table:
+id, title, thumbnail-link, creation date, description, ownerId
+
+Progress-Project table:
+id, projectId, comment, creation date, authorId
+
+Skills table:
+id, skillName:
+
+Progress-Skill table:
+Id, progressId, skillId
