@@ -1,11 +1,16 @@
 import Router from '@koa/router';
-import controller from './controllers.js';
+import projectController from './controllers/projectController.js';
+import progressController from './controllers/progressController.js';
 
 const router = new Router();
 
-router.get('/',controller.healthCheck);
-router.post('/projects',controller.createProject );
-router.get('/projects',controller.getAllProjectsFromUser );
+router.get('/', (ctx) => ctx.response.body = "success");
+
+router.post('/projects',projectController.createProject );
+router.get('/projects',projectController.getAllProjectsFromUser );
+
+router.post('/progress',progressController.addProgress );
+router.get('/progress/project/:projectId',progressController.getAllProgressForProject );
 
 
 export default router;

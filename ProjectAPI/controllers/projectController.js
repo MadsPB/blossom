@@ -1,9 +1,6 @@
-import Project from './models/project.js'
+import Project from '../models/project.js'
 
 const USER_ID = 1;
-export const healthCheck = (ctx, next) => {
-  ctx.response.body = "success"
-}
 
 export const createProject = async (ctx, next) => {
 
@@ -32,4 +29,4 @@ export const getAllProjectsFromUser = async (ctx, next) => {
   }
 }
 
-export default {healthCheck, createProject, getAllProjectsFromUser}
+export default { createProject, getAllProjectsFromUser }
