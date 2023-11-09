@@ -1,1 +1,6 @@
-<app-project-list-item *ngFor="let project of projects" [project]="project"></app-project-list-item>
+<app-project-list-item 
+[class.selected]="project === selectedProject" 
+(click)="onSelect(project)" 
+*ngFor="let project of projects" 
+[project]="project">
+</app-project-list-item>

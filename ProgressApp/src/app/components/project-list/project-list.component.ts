@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Project } from 'src/app/interfaces/project';
 import { ProjectApiService } from 'src/app/services/project-api.service';
 
 @Component({
@@ -9,38 +10,18 @@ import { ProjectApiService } from 'src/app/services/project-api.service';
 export class ProjectListComponent {
 
   constructor(private projectApi:ProjectApiService){}
-  projects:any[] = [
-    {
-      "id": 1,
-      "title": "myTitle1",
-      "image_url": "../../../assets/thumbnailExample.png",
-      "creatorId": 1,
-      "description": "my great project",
-      "createdAt": "2023-11-08T19:29:42.766Z",
-      "updatedAt": "2023-11-08T19:29:42.766Z"
-    },
-    {
-      "id": 2,
-      "title": "myTitle2",
-      "image_url": "../../../assets/thumbnailExample.png",
-      "creatorId": 1,
-      "description": "my great project",
-      "createdAt": "2023-11-08T19:30:01.448Z",
-      "updatedAt": "2023-11-08T19:30:01.448Z"
-    },
-    {
-      "id": 3,
-      "title": "myTitle3",
-      "image_url": "../../../assets/thumbnailExample.png",
-      "creatorId": 1,
-      "description": "my great project",
-      "createdAt": "2023-11-08T19:30:04.312Z",
-      "updatedAt": "2023-11-08T19:30:04.312Z"
-    }
-  ];
+  projects:any[] = [];
+  selectedProject?:Project;
 
   ngOnInit(){
-    this.projectApi.getProjects().subscribe(projects => this.projects = projects)
+    this.projectApi.getProjects().subscribe(projects => {
+      this.projects = projects;
+      this.selectedProject = projects.find(_=>true);
+    });
+  }
+
+  onSelect(project:Project){
+    this.selectedProject = project;
   }
 
 

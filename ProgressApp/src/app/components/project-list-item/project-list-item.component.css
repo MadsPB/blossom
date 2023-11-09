@@ -1,4 +1,10 @@
 :host {
   background-color: red;
   margin:20px; 
+  width: 210px;
+  padding: 5px;
+}
+
+:host img {
+  width: 200px;
 }
