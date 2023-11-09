@@ -6,8 +6,10 @@
   <h3>Progress</h3>
   <div class="skills">
     <textarea placeholder="Add Progress.." [formControl]="commentControl"></textarea>
+    <div *ngFor="let skill of assignedSkills">{{skill.name}}</div>
+    <button *ngFor="let skill of foundSkills" (click)="onSkillClick(skill)">{{skill.name}}</button>
     <div class="skills-row">
-      <input type="text" placeholder="type skill..">
+      <input type="text" placeholder="type skill.." [formControl]="skillControl">
       <button (click)="onCommitProgress()" [disabled]="!commentControl.valid">Commit</button>
     </div>
   </div>

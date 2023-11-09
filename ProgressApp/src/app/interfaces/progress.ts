@@ -1,3 +1,5 @@
+import { Skill } from "./Skill"
+
 export interface Progress {
   comment:string,
   createdAt:Date,
@@ -11,6 +13,3 @@ export interface NewProgress {
   skills: Skill[]
 }
 
-interface Skill {
-  name: string
-}
