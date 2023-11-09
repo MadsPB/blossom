@@ -5,6 +5,6 @@
     <p class="time">Added on: {{progress?.createdAt | dateTransform}}</p>
   </div>
 </div>
-<div class="skills"><p class="skill" *ngFor="let i of [1,2,3,4]">skill{{i}}</p></div>
+<div class="skills"><p class="skill" *ngFor="let skill of progress!.skills">{{skill.name}}</p></div>
 
 

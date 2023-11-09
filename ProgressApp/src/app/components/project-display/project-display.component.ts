@@ -29,7 +29,7 @@ export class ProjectDisplayComponent {
 
   onCommitProgress()
   {
-    const newProgress: NewProgress = {projectId: this.displayedProject!.id, comment: this.commentControl.value!}
+    const newProgress: NewProgress = {projectId: this.displayedProject!.id, comment: this.commentControl.value!, skills: [{name:"cSharp"},{name:"postgres"}]}
     this.progresApi.addProgress(newProgress).subscribe(progress => this.progress.unshift(progress));
   }
 }
