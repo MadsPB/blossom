@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Project } from 'src/app/interfaces/project';
 import { ProjectApiService } from 'src/app/services/project-api.service';
+import { ProjectService } from 'src/app/services/project.service';
 
 @Component({
   selector: 'app-project-list',
@@ -9,7 +10,7 @@ import { ProjectApiService } from 'src/app/services/project-api.service';
 })
 export class ProjectListComponent {
 
-  constructor(private projectApi:ProjectApiService){}
+  constructor(private projectApi:ProjectApiService, private projectService:ProjectService){}
   projects:any[] = [];
   selectedProject?:Project;
 
@@ -22,6 +23,7 @@ export class ProjectListComponent {
 
   onSelect(project:Project){
     this.selectedProject = project;
+    this.projectService.selectProject(project);
   }
 
 

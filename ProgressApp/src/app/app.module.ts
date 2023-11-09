@@ -12,6 +12,7 @@ import { ProjectDashboardComponent } from './components/project-dashboard/projec
 import { ProjectListComponent } from './components/project-list/project-list.component';
 import { ProjectListItemComponent } from './components/project-list-item/project-list-item.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { ProjectDisplayComponent } from './components/project-display/project-display.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     ThumbnailPickerItemComponent,
     ProjectDashboardComponent,
     ProjectListComponent,
-    ProjectListItemComponent
+    ProjectListItemComponent,
+    ProjectDisplayComponent
   ],
   imports: [
     BrowserModule,
