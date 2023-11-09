@@ -2,14 +2,8 @@ import Router from '@koa/router';
 import projectController from './controllers/projectController.js';
 import progressController from './controllers/progressController.js';
 import skillController from './controllers/skillController.js';
-import sequelize from './db.js';
+import * as models from './models/models.js'
 
-try{
-  (async()=>await sequelize.sync({force:true}))();
-} catch (error)
-{
-  console.log("could not sync: "+error);
-}
 
 const router = new Router();
 
