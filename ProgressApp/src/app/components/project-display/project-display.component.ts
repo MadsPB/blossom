@@ -30,6 +30,6 @@ export class ProjectDisplayComponent {
   onCommitProgress()
   {
     const newProgress: NewProgress = {projectId: this.displayedProject!.id, comment: this.commentControl.value!}
-    this.progresApi.addProgress(newProgress).subscribe(progress => this.progress.push(progress));
+    this.progresApi.addProgress(newProgress).subscribe(progress => this.progress.unshift(progress));
   }
 }

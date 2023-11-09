@@ -14,6 +14,7 @@ import { ProjectListItemComponent } from './components/project-list-item/project
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProjectDisplayComponent } from './components/project-display/project-display.component';
 import { ProgressComponent } from './components/progress/progress.component';
+import { DateTransformPipe } from './pipe/date-transform.pipe';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ProgressComponent } from './components/progress/progress.component';
     ProjectListComponent,
     ProjectListItemComponent,
     ProjectDisplayComponent,
-    ProgressComponent
+    ProgressComponent,
+    DateTransformPipe
   ],
   imports: [
     BrowserModule,
