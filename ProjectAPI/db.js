@@ -2,7 +2,8 @@ import { Sequelize } from 'sequelize';
 
 const config = {
   host: 'localhost',
-  dialect: 'postgres'
+  dialect: 'postgres',
+  logging: false
 };
 
 

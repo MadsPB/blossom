@@ -16,12 +16,5 @@ const Progress = sequelize.define('Progress', {
   }
 });
 
-try{
-  (async()=>await sequelize.sync({alter:true}))();
-} catch (error)
-{
-  console.log("could not sync: "+error);
-}
-
 export default Progress;
 
