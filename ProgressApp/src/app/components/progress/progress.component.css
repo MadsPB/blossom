@@ -1,0 +1,37 @@
+:host {
+  margin: 10px 10px 0px 10px;
+  padding: 5px;
+  background-color: gray; 
+}
+
+:host .content {
+  width: 100%;
+}
+
+:host .comment {
+  width: 100%;
+  min-height: 50px;
+}
+
+:host .info {
+  display:flex;
+  justify-content: space-between;
+}
+
+:host .time {
+  text-align: right;
+  width: 100px;
+  font-size: 12px;
+}
+
+:host .skills {
+  display: flex;
+  background-color: aliceblue;
+}
+:host .skill {
+  margin: 5px;
+  padding: 3px;
+  color: white;
+  background-color:grey;
+  cursor: pointer;
+}

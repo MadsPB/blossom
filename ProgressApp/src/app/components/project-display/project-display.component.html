@@ -4,6 +4,14 @@
   <h3>Desciption</h3>
   <p>{{displayedProject.description}}</p>
   <h3>Progress</h3>
+  <div class="skills">
+    <textarea placeholder="Add Progress.." [formControl]="commentControl"></textarea>
+    <div class="skills-row">
+      <input type="text" placeholder="type skill..">
+      <button (click)="onCommitProgress()" [disabled]="!commentControl.valid">Commit</button>
+    </div>
+  </div>
+  <app-progress *ngFor="let singleProgress of progress" [progress]="singleProgress"></app-progress>
   
 
 </div>

@@ -13,6 +13,7 @@ import { ProjectListComponent } from './components/project-list/project-list.com
 import { ProjectListItemComponent } from './components/project-list-item/project-list-item.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ProjectDisplayComponent } from './components/project-display/project-display.component';
+import { ProgressComponent } from './components/progress/progress.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ProjectDisplayComponent } from './components/project-display/project-di
     ProjectDashboardComponent,
     ProjectListComponent,
     ProjectListItemComponent,
-    ProjectDisplayComponent
+    ProjectDisplayComponent,
+    ProgressComponent
   ],
   imports: [
     BrowserModule,

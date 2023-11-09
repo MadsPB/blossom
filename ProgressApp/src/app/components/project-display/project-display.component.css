@@ -4,7 +4,7 @@
   margin-right: auto;
   padding: 20px;
   width: 60%;
-  height: 800px;
+  min-height: 800px;
   display:flex;
   background-color: blueviolet;
 }
@@ -35,4 +35,28 @@
   background-color: blanchedalmond;
   min-height: 200px;
   padding: 20px;
+}
+
+:host .skills {
+  background-color: blanchedalmond;
+  padding: 5px;
+  min-height: 100px;
+
+
+}
+
+:host .skills-row {
+  margin-top: auto;
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+}
+
+:host input {
+  flex-grow: 1;
+}
+
+:host button {
+  background-color: #8BBF8A;
+  color:white;
 }
