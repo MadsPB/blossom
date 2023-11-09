@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Observable, tap } from 'rxjs';
-import { Project } from '../interfaces/project';
+import { NewProject, Project } from '../interfaces/project';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export class ProjectApiService {
       );
   }
 
-  createProject(project:Project): Observable<Project> {
+  createProject(project:NewProject): Observable<Project> {
     return this.http.post<Project>(this.baseUrl+'/projects', project);
   }
 }
