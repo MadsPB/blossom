@@ -1,7 +1,7 @@
 import redisDb from "../infrastructure/redisdb.js";
 import { v4 as uuidv4 } from 'uuid';
 
-const EXPIRATION = 60*1;
+const EXPIRATION = 60*3;
 
 export async function createSession(userId)
 {
