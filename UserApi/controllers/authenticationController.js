@@ -1,13 +1,13 @@
 import User from '../models/user.js';
-
-const session = new Set();
+import session from '../models/session.js'
 
 export async function register(req,res) {
 
   try {
     const user = await User.create(req.body);
    
-    setSession(res, user);
+    const sessionId = await session.createSession(user.id);
+    setSessionCookie(res, sessionId);
 
     res.send(user);
   } catch (error) {
@@ -47,7 +47,8 @@ export async function login(req,res) {
       return;
     }
 
-    setSession(res, foundUser);
+    const sessionId = await session.createSession(foundUser.id);
+    setSessionCookie(res, sessionId);
     res.send('success');
 
   } catch (error) {
@@ -56,28 +57,30 @@ export async function login(req,res) {
   }
 };
 
-export function logout(req,res) {
-  const sessionId = getSessionId(req);
-  session.delete(sessionId);
+export async function logout(req,res) {
+  const sessionId = getSessionIdFromCookie(req);
+  await session.deleteSession(sessionId);
 
   res.send(`logout success`);
 };
 
-export function auth(req,res) {
+export async function auth(req,res) {
 
-  const sessionId = getSessionId(req);
+  const sessionId = getSessionIdFromCookie(req);
+  const authorized = await session.exists(sessionId);
+  
+  authorized && await session.extendSession(sessionId);
 
-  res.send(`user is ${session.has(sessionId)}`);
+  res.send(`user is ${authorized}`);
 };
 
-function getSessionId(req)
+function getSessionIdFromCookie(req)
 {
   const cookieRaw = req.headers.cookie;
-  return +cookieRaw.split('=')[1];
+  return cookieRaw.split('=')[1];
 }
 
-function setSession(res, user)
+function setSessionCookie(res, id)
 {
-  session.add(user.id);
-  res.setHeader('Set-Cookie',`sessionId=${user.id}`)
+  res.setHeader('Set-Cookie',`sessionId=${id}`)
 }
