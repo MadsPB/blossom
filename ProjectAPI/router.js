@@ -3,12 +3,13 @@ import projectController from './controllers/projectController.js';
 import progressController from './controllers/progressController.js';
 import skillController from './controllers/skillController.js';
 import * as models from './models/models.js'
-
+import auth from './middleware/auth.js'
 
 const router = new Router();
 
 router.get('/', (ctx) => ctx.response.body = "success");
 
+router.use(auth)
 router.post('/projects',projectController.createProject );
 router.get('/projects',projectController.getAllProjectsFromUser );
 

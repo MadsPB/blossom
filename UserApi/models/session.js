@@ -1,7 +1,7 @@
 import redisDb from "../infrastructure/redisdb.js";
 import { v4 as uuidv4 } from 'uuid';
 
-const EXPIRATION = 10*1;
+const EXPIRATION = 60*1;
 
 export async function createSession(userId)
 {
@@ -12,11 +12,11 @@ export async function createSession(userId)
   return sessionId;
 }
 
-export async function exists(sessionId)
+export async function getSession(sessionId)
 {
   const session = await redisDb.get(sessionId);
   
-  return !!session;
+  return session;
 }
 
 export async function deleteSession(sessionId)
@@ -31,4 +31,4 @@ async function extendSession(sessionId)
   await redisDb.expire(sessionId,EXPIRATION);
 }
 
-export default { createSession, exists, deleteSession, extendSession };
+export default { createSession, getSession, deleteSession, extendSession };

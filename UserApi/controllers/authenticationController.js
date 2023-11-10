@@ -67,17 +67,33 @@ export async function logout(req,res) {
 export async function auth(req,res) {
 
   const sessionId = getSessionIdFromCookie(req);
-  const authorized = await session.exists(sessionId);
+  const userId = await session.getSession(sessionId);
   
-  authorized && await session.extendSession(sessionId);
+  if(!userId)
+  {
+    res.statusCode = 401;
+    res.send("Unauthorized")
+    return;
+  }
 
-  res.send(`user is ${authorized}`);
+  userId !== null && await session.extendSession(sessionId);
+  res.send({ userId });
 };
 
 function getSessionIdFromCookie(req)
 {
   const cookieRaw = req.headers.cookie;
-  return cookieRaw.split('=')[1];
+  if(!cookieRaw)
+    return '';
+
+
+  const cookieArray = cookieRaw.split('=');
+
+  let sessionIndex = cookieArray.indexOf("sessionId")
+  if(sessionIndex < 0 || ++sessionIndex >= cookieArray.length)
+    return '';
+
+  return cookieArray[sessionIndex];
 }
 
 function setSessionCookie(res, id)

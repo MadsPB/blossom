@@ -4,12 +4,10 @@ const config = {
   host: process.env.POSTGRES_HOST ?? 'localhost',
   dialect: 'postgres',
   logging: false,
-  port: process.env.POSTGRES_PORT ?? 5555
+  port: process.env.POSTGRES_PORT ?? 5432
 };
 
-
-const sequelize = new Sequelize('projectdb', 'postgres', 'mysecretpassword',config);
-
+const sequelize = new Sequelize('projectdb', process.env.POSTGRES_USER ?? 'mads', process.env.POSTGRES_PASS ?? '', config);
 
 try {
   await sequelize.authenticate();
