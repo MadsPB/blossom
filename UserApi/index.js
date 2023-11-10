@@ -5,19 +5,19 @@ import cors from 'cors';
 
 const app = express();
 
-// app.use(cors({
-//   origin: 'http://localhost:4200',
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-//   maxAge: 86400,
-//   credentials: true,
-// }));
-app.use(async (req,res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  //maxAge: 86400,
+  credentials: true,
+}));
+// app.use(async (req,res, next) => {
+//   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+//   res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+//   res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-  await next();
-});
+//   await next();
+// });
 app.use(bodyParser.json());
 app.use(router);
 
