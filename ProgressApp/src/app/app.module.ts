@@ -17,6 +17,7 @@ import { DateTransformPipe } from './pipe/date-transform.pipe';
 import { LandingPageComponent } from './components/landing-page/landing-page.component';
 import { AboutComponent } from './components/about/about.component';
 import { CredentialsInterceptor } from './interceptor/credentials.interceptor';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CredentialsInterceptor } from './interceptor/credentials.interceptor';
     ProgressComponent,
     DateTransformPipe,
     LandingPageComponent,
-    AboutComponent
+    AboutComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
