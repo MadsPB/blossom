@@ -9,7 +9,6 @@ export class AuthApiService {
 
   baseUrl = 'http://localhost:3000';
 
-
   constructor(private http:HttpClient) { }
 
   isLoggedIn():Observable<boolean> {
@@ -55,6 +54,19 @@ export class AuthApiService {
       tap(el=>console.log(el)),
       map<string,boolean>(user=> user.length>0));
   }
+
+  register(username:string, password:string):Observable<boolean> {
+    return this.http.post(this.baseUrl+'/register',{username,password},{responseType: 'text'}).pipe(
+      catchError((e: HttpErrorResponse) => {
+        if(e.status === 401)
+          return of('');
+        
+        throw e;
+      }),
+      tap(el=>console.log(el)),
+      map<string,boolean>(user=> user.length>0));
+  }
+  
 
 
 }
