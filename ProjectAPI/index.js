@@ -6,12 +6,16 @@ import cors from 'koa2-cors'
 const port = 3001;
 
 const options = {
-  origin: '*'
+  //origin: 'http://localhost:4200',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  // maxAge: 86400,
+  credentials: true,
 };
-app.use(cors())
+app.use(cors(options))
 app.use(async (ctx, next) => {
-  ctx.set('Access-Control-Allow-Origin', '*');
-  ctx.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+  ctx.set('Access-Control-Allow-Origin', ctx.req.headers.origin);
+  // ctx.set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, OPTIONS');
+  // ctx.set('Access-Control-Allow-Credentials', 'true');
   await next();
 });
 app.use(bodyParser())
