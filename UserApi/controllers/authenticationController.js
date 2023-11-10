@@ -58,6 +58,7 @@ export async function login(req,res) {
 };
 
 export async function logout(req,res) {
+  const cookie = req.headers;
   const sessionId = getSessionIdFromCookie(req);
   await session.deleteSession(sessionId);
 
@@ -86,8 +87,7 @@ function getSessionIdFromCookie(req)
   if(!cookieRaw)
     return '';
 
-
-  const cookieArray = cookieRaw.split('=');
+  const cookieArray = cookieRaw.split(' ').flatMap(cookie=>cookie.split('='));
 
   let sessionIndex = cookieArray.indexOf("sessionId")
   if(sessionIndex < 0 || ++sessionIndex >= cookieArray.length)
@@ -98,5 +98,5 @@ function getSessionIdFromCookie(req)
 
 function setSessionCookie(res, id)
 {
-  res.setHeader('Set-Cookie',`sessionId=${id}`)
+  res.cookie('sessionId',id) //,{ sameSite: 'none', httpOnly: true}
 }
