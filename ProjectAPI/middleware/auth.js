@@ -7,7 +7,7 @@ export default async (ctx,next) =>
 
     if(result.status === 200)
     {
-      ctx.request.session = result;
+      ctx.session = await result.json();
       await next();
       return;
     }

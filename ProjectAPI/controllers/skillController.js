@@ -1,8 +1,6 @@
 import Skill from '../models/skill.js'
 import { Op }  from "sequelize";
 
-const USER_ID = 1;
-
 export const getAll = async (ctx, next) => {
 
   try{

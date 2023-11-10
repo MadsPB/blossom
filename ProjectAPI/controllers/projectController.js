@@ -1,11 +1,9 @@
 import Project from '../models/project.js'
 
-const USER_ID = 1;
-
 export const createProject = async (ctx, next) => {
 
   try{
-    const project = await Project.create({...ctx.request.body,creatorId:USER_ID});
+    const project = await Project.create({...ctx.request.body,creatorId:ctx.session.userId});
 
     ctx.response.statusCode = 201;
     ctx.response.body = project;
@@ -19,7 +17,7 @@ export const createProject = async (ctx, next) => {
 export const getAllProjectsFromUser = async (ctx, next) => {
 
   try{
-    const projects = await Project.findAll({where: {creatorId:USER_ID}});
+    const projects = await Project.findAll({where: {creatorId:ctx.session.userId}});
 
     ctx.response.statusCode = 200;
     ctx.response.body = projects;

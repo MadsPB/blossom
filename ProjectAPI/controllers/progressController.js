@@ -2,8 +2,6 @@ import Progress from '../models/progress.js'
 import Skill from '../models/skill.js'
 import sequelize from '../db.js';
 
-const USER_ID = 1;
-
 export const addProgress = async (ctx, next) => {
 
   try{
@@ -19,7 +17,7 @@ export const addProgress = async (ctx, next) => {
       {
         projectId,
         comment,
-        contributtorId:USER_ID,
+        contributtorId:ctx.session.userId,
       }, {transaction: t});
 
     await progress.addSkills(foundSkills, { transaction: t });
