@@ -1,0 +1,15 @@
+<p>Is logged in: {{isLoggedIn}}</p>
+
+
+<form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit($event)">
+  <label>Username</label>
+  <input type="text" placeholder="username.." formControlName="username">
+  <label>Password</label>
+  <input type="password" placeholder="password.." formControlName="password">
+  <button type="submit" [disabled]="!loginFormGroup.valid">login</button>
+</form>
+
+
+<button (click)="onLogin()">login</button>
+<button (click)="onCheckLogin()">check</button>
+<button (click)="onLogout()">logout</button>
