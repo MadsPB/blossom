@@ -1,13 +1,14 @@
 import { Sequelize } from 'sequelize';
 
 const config = {
-  host: 'localhost',
+  host: process.env.POSTGRES_HOST ?? 'localhost',
   dialect: 'postgres',
-  logging: true
+  logging: false,
+  port: process.env.POSTGRES_PORT ?? 5555
 };
 
 
-const sequelize = new Sequelize('projectdb', 'mads', '',config);
+const sequelize = new Sequelize('projectdb', 'postgres', 'mysecretpassword',config);
 
 
 try {

@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+
+  project_api:
+    build: ProjectApi/.
+    ports:
+      - 3001:3001
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    environment:
+      - POSTGRES_HOST=postgres_db
+      - POSTGRES_PORT=5432
+
+  postgres_db:
+    image: postgres
+    restart: always
+    ports:
+      - 5555:5432 #remove for production, used for allowing local development against
+    volumes:
+      - ./volumes:/var/lib/postgresql/data 
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: projectdb
+      PGUSER: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "projectdb"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
+      start_period: 5s  
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
