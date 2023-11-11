@@ -111,6 +111,7 @@
 
 
 :host .hero {
+  z-index: 2;
   display:flex;
   flex-direction: column;
   align-items: center;
@@ -156,4 +157,25 @@
   top: 450px;
   pointer-events: none;
 
+}
+
+:host .blossom-word {
+  float: right;
+  font-size: 60px;
+  font-weight: bold;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: uppercase ;
+  /* background-image: url('../../../assets/flowers.jpg'); */
+  background: radial-gradient(farthest-corner at 40px 20px, #c77971 2%, #8d9189 37%,#8d9189 50%,#be6264 90%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+:host .outer-blossom-word {
+  /* background:radial-gradient(#414141 20%,#f4f4f400 60%); */
+  display: block;
+  float:right;
+  height: fit-content;
+  width: fit-content;
 }
