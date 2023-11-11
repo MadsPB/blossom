@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthApiService } from './services/auth-api.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'progress-app';
+  constructor(public authService:AuthApiService){}
+
 }

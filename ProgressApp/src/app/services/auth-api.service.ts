@@ -10,37 +10,29 @@ import { LoginStatus } from '../interfaces/LoginStatus';
 })
 export class AuthApiService {
 
-  baseUrl = 'http://localhost:3000';
+  private baseUrl = 'http://localhost:3000';
+
+  isLoggedIn = false;
 
   constructor(private http:HttpClient) { }
 
-  isLoggedIn():Observable<boolean> {
+  updateLoggedInStatus():Observable<boolean> {
     return this.http.get<Auth>(this.baseUrl+'/auth',{
       withCredentials: true
   }).pipe(
+      map<Auth,boolean>(auth=> {
+        return auth.authorized 
+      }),
       catchError((e,o)=>{
         if(e.status === 401)
-          return of({authorized: false})
+          return of(false)
         
         console.log("[isLoggedInError] "+e)
         throw e;
       }),
-      map<Auth,boolean>(auth=> {
-        return auth.authorized 
-      }
-      )
+      tap(el=> this.isLoggedIn = el)
       );
   }
-
-  /*
-(e: HttpErrorResponse):User => {
-        if(e.status === 401)
-          return of({userId:-1});
-        
-        console.log("[isLoggedInError] "+e)
-        throw e;
-      }
-  */
 
   login(username:string, password:string):Observable<LoginStatus> {
     return this.http.post(this.baseUrl+'/login',{username,password},{responseType: 'text'}).pipe(
@@ -51,7 +43,9 @@ export class AuthApiService {
           return of(LoginStatus.UserNameOrPasswordIncorrect);
         
         throw e;
-      }),);
+      }),
+      tap(el => this.isLoggedIn = el === LoginStatus.Success)
+      );
   }
   
   logout():Observable<void> {
@@ -70,7 +64,8 @@ export class AuthApiService {
           return of(RegisterStatus.UserAlreadyExists);
         
         throw e;
-      }));
-  }
-  
+      }),
+      tap(el => this.isLoggedIn = el === RegisterStatus.Success)
+      );
+  } 
 }

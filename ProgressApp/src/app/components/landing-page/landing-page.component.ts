@@ -9,27 +9,13 @@ import { AuthApiService } from 'src/app/services/auth-api.service';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent {
-  isLoggedIn = false;
-
-  loginFormGroup = new FormGroup({
-    username: new FormControl('', Validators.required),
-    password: new FormControl('', Validators.required),
-  })
-
-  
-  constructor(private authApi:AuthApiService){}
 
   ngOnInit()
   {
     //this.authApi.isLoggedIn().subscribe(loggedIn => this.isLoggedIn = loggedIn);
   }
 
-  onSubmit(e:any)
-  {
-    console.log(e);
-    this.authApi.login(this.loginFormGroup.value.username!,this.loginFormGroup.value.password!)
-    .subscribe(loggedIn => this.isLoggedIn = loggedIn === LoginStatus.Success)
-  }
+  constructor(private authApi:AuthApiService){}
 
   onLogin()
   {
@@ -38,7 +24,7 @@ export class LandingPageComponent {
 
   onCheckLogin()
   {
-    this.authApi.isLoggedIn().subscribe(loggedIn => console.log("isloggedIn "+loggedIn));
+    this.authApi.updateLoggedInStatus().subscribe(loggedIn => console.log("isloggedIn "+loggedIn));
   }
 
   onLogout()

@@ -1,0 +1,159 @@
+.myImage {
+  height: 300px;
+  width: 100%;
+  background-image: url('../../../assets/blossombg.jpg');
+  background-position: center center;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+.background-tint {
+  background-color: rgba(179, 89, 0, 0.5);
+  background-blend-mode: multiply;
+}
+
+:host a {
+  text-decoration: none;
+}
+
+:host .title {
+  font-size: 3rem;
+  color: white;
+  /* background-color: #476b4ebd; */
+  padding: 5px 10px 5px;
+  border-radius: 15px;
+}
+
+:host h2 {
+  color: white;
+}
+
+:host .headline {
+  text-align: center;
+  font-size: 5rem;
+  justify-self: center;
+}
+
+:host .headline-container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 46px;
+}
+
+:host .button {
+  color: white;
+  background-color: #2EB200;
+  border-radius: 15px;
+  padding: 8px 15px 8px 15px;
+  width: fit-content;
+  text-align: center;
+}
+
+:host .login {
+  color: white;
+  background-color: #2fb2004b;
+  border-radius: 15px;
+  padding: 8px 15px 8px 15px;
+  width: fit-content;
+  text-align: center;
+}
+
+:host .login:hover {
+  color: white;
+  background-color: #2EB200;
+  border-radius: 15px;
+  padding: 8px 15px 8px 15px;
+  width: fit-content;
+  text-align: center;
+}
+
+:host .upperBar {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 40px 0px 40px;
+  max-width: 1760px;
+}
+
+:host .upperBar > div {
+  display: flex;
+  width: 300px;
+}
+
+:host .upperBar > div > a {
+  margin-right: 20px;
+}
+
+:host .hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-top: 100px;
+}
+
+:host .call-to-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* font-size: 2rem; */
+  /* text-align: center; */
+}
+
+:host .call-to-action p {
+  font-size: 2rem;
+  pointer-events: none;
+}
+
+
+:host .hero {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  width: 435px;
+  background-color: #e9e9e9;
+  height: 254px;
+  padding:30px 30px 30px 30px;
+  border-radius: 15px;
+
+}
+
+:host .hero > p {
+  font-size: 25px;
+}
+
+:host .hero > a {
+  margin-top: auto;
+}
+
+:host .hero-image {
+  display: flex;
+  width: 500px;
+  height: 350px;
+}
+
+:host .hero-image img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 20px;
+}
+
+:host .button:hover {
+  scale: 1.2;
+}
+
+:host .main-container {
+  max-width: 1760px;
+  margin: 0 auto 0 auto;
+}
+
+:host .tree {
+  position: absolute;
+  top: 450px;
+  pointer-events: none;
+
+}

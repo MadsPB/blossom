@@ -18,6 +18,8 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { AboutComponent } from './components/about/about.component';
 import { CredentialsInterceptor } from './interceptor/credentials.interceptor';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { RegisterUserComponent } from './components/register-user/register-user.
     DateTransformPipe,
     LandingPageComponent,
     AboutComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    HomeComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -51,4 +55,4 @@ import { RegisterUserComponent } from './components/register-user/register-user.
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

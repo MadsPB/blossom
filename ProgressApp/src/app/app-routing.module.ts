@@ -6,13 +6,21 @@ import { LandingPageComponent } from './components/landing-page/landing-page.com
 import { authGuard } from './guards/auth.guard';
 import { AboutComponent } from './components/about/about.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
+import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path:'', component: LandingPageComponent},
+  {
+    path: '', canActivate: [authGuard], children: [
+      {path:'createProject', component: CreateProjectComponent},
+      {path:'projectDashboard', component: ProjectDashboardComponent },
+      {path:'home', component: HomeComponent },
+    ]
+  },
   {path:'about', component: AboutComponent},
-  {path:'createProject', canActivate: [authGuard], component: CreateProjectComponent},
-  {path:'projectDashboard', canActivate: [authGuard], component: ProjectDashboardComponent },
-  {path:'register', component: RegisterUserComponent },
+  {path:'login', component: LoginComponent},
+  {path:'join', component: RegisterUserComponent }
 ];
 
 @NgModule({

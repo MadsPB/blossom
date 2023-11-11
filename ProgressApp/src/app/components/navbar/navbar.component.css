@@ -1,4 +1,4 @@
-:host
+:host .nav
 {
   background-color: #d9d9d9;
   position: fixed;
@@ -10,4 +10,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+:host
+{
+  display: block;
+  height: 80px;
+  width:100%;
 }

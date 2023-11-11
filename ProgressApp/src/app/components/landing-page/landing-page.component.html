@@ -1,17 +1,32 @@
-<p>Is logged in: {{isLoggedIn}}</p>
+<header class="myImage background-tint">
+    <div class="upperBar">
+      <a routerLink="/"><h2 class="title">Blossom</h2></a>
+      <div>
+        <a routerLink="login"><div class="login">log in</div></a>
+        <a routerLink="join"><div class='button'>Sign up!</div></a>
+      </div>
+    </div>
+    <div class="headline-container">
+      <h2 class="headline">Grow with Blossom</h2>
+    </div>
+</header>
 
-
-<form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit($event)">
-  <label>Username</label>
-  <input type="text" placeholder="username.." formControlName="username">
-  <label>Password</label>
-  <input type="password" placeholder="password.." formControlName="password">
-  <button type="submit" [disabled]="!loginFormGroup.valid">login</button>
-</form>
-
+<div class="main-container">
+  <section class="hero-container">
+    <div class="hero">
+      <p>Your digital garden for tracking and nurturing talents, hobbies, and passion projects. Watch your progress as your abilities flourish and blossom.</p>
+      <a routerLink="join"><div class="call-to-action button"><p>Try it!</p></div></a>
+    </div>
+    <div class="hero-image">
+      <img  src="../../../assets/projects.jpg">
+    </div>
+  <img class="tree" src="../../../assets/tree.svg">
+  </section>
+</div>
 
 <button (click)="onLogin()">login</button>
 <button (click)="onCheckLogin()">check</button>
 <button (click)="onLogout()">logout</button>
 
-<a routerLink="register">Register</a>
+
+
