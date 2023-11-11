@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginStatus } from 'src/app/interfaces/LoginStatus';
 import { AuthApiService } from 'src/app/services/auth-api.service';
 
 @Component({
@@ -27,7 +28,7 @@ export class LandingPageComponent {
   {
     console.log(e);
     this.authApi.login(this.loginFormGroup.value.username!,this.loginFormGroup.value.password!)
-    .subscribe(loggedIn => this.isLoggedIn = loggedIn)
+    .subscribe(loggedIn => this.isLoggedIn = loggedIn === LoginStatus.Success)
   }
 
   onLogin()

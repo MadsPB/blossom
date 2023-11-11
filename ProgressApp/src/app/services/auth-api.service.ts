@@ -1,6 +1,9 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, of, switchMap, tap } from 'rxjs';
+import { Auth } from '../interfaces/Auth';
+import { RegisterStatus } from '../interfaces/RegisterStatus';
+import { LoginStatus } from '../interfaces/LoginStatus';
 
 @Injectable({
   providedIn: 'root'
@@ -12,65 +15,62 @@ export class AuthApiService {
   constructor(private http:HttpClient) { }
 
   isLoggedIn():Observable<boolean> {
-    return this.http.get(this.baseUrl+'/auth',{
+    return this.http.get<Auth>(this.baseUrl+'/auth',{
       withCredentials: true
   }).pipe(
-      tap((el:any) => {
-        console.log("[isLoggedIn] " +el)
-      }),
-      catchError((e: HttpErrorResponse) => {
+      catchError((e,o)=>{
         if(e.status === 401)
-          return of({userId:-1});
+          return of({authorized: false})
         
         console.log("[isLoggedInError] "+e)
         throw e;
       }),
-      map<User,boolean>(user=> {
-        return (user.userId > 0)
+      map<Auth,boolean>(auth=> {
+        return auth.authorized 
       }
       )
       );
   }
 
-  login(username:string, password:string):Observable<boolean> {
-    return this.http.post(this.baseUrl+'/login',{username,password},{responseType: 'text'}).pipe(
-      catchError((e: HttpErrorResponse) => {
+  /*
+(e: HttpErrorResponse):User => {
         if(e.status === 401)
-          return of('');
+          return of({userId:-1});
         
+        console.log("[isLoggedInError] "+e)
         throw e;
-      }),
-      tap(el=>console.log(el)),
-      map<string,boolean>(user=> user.length>0));
-  }
-  logout():Observable<boolean> {
-    return this.http.post(this.baseUrl+'/logout',{},{responseType: 'text'}).pipe(
-      catchError((e: HttpErrorResponse) => {
-        if(e.status === 401)
-          return of('');
-        
-        throw e;
-      }),
-      tap(el=>console.log(el)),
-      map<string,boolean>(user=> user.length>0));
-  }
+      }
+  */
 
-  register(username:string, password:string):Observable<boolean> {
-    return this.http.post(this.baseUrl+'/register',{username,password},{responseType: 'text'}).pipe(
+  login(username:string, password:string):Observable<LoginStatus> {
+    return this.http.post(this.baseUrl+'/login',{username,password},{responseType: 'text'}).pipe(
+      tap(el=>console.log(el)),
+      map<any,LoginStatus>(_=> LoginStatus.Success),
       catchError((e: HttpErrorResponse) => {
         if(e.status === 401)
-          return of('');
+          return of(LoginStatus.UserNameOrPasswordIncorrect);
         
         throw e;
-      }),
-      tap(el=>console.log(el)),
-      map<string,boolean>(user=> user.length>0));
+      }),);
   }
   
+  logout():Observable<void> {
+    return this.http.post(this.baseUrl+'/logout',{},{responseType: 'text'})
+                    .pipe(
+                      tap(el=>console.log(el)),
+                      map(el => undefined)
+                      );
+  }
 
-
-}
-
-type User = {
-  userId:number
+  register(username:string, password:string):Observable<RegisterStatus> {
+    return this.http.post(this.baseUrl+'/register',{username,password},{responseType: 'text'}).pipe(
+      map<any,RegisterStatus>(_=> RegisterStatus.Success),
+      catchError((e: HttpErrorResponse) => {
+        if(e.status === 409)
+          return of(RegisterStatus.UserAlreadyExists);
+        
+        throw e;
+      }));
+  }
+  
 }

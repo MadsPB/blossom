@@ -13,8 +13,7 @@ export async function register(req,res) {
   } catch (error) {
     if(error.name === 'SequelizeUniqueConstraintError')
     {
-      console.log("username not unique");
-      res.statusCode = 400;
+      res.statusCode = 409;
       res.setHeader("content-type","plain/text")
       res.send("user already exists");
       return;
@@ -73,12 +72,12 @@ export async function auth(req,res) {
   if(!userId)
   {
     res.statusCode = 401;
-    res.send("Unauthorized")
+    res.send({authorized: false})
     return;
   }
 
   userId !== null && await session.extendSession(sessionId);
-  res.send({ userId });
+  res.send({ authorized: true, userId });
 };
 
 function getSessionIdFromCookie(req)
