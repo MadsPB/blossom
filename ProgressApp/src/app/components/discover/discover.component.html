@@ -1,0 +1,7 @@
+<p>discover works!</p>
+
+<div *ngIf="middle">
+  <div *ngIf="left"><img [src]="left.image_url"></div>
+  <div><img (click)="onNextProject()" [src]="middle.image_url"></div>
+  <div><img [src]="right.image_url"></div>
+</div>

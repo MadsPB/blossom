@@ -8,6 +8,8 @@ import { AboutComponent } from './components/about/about.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { DiscoverComponent } from './components/discover/discover.component';
+import { SkillsDashboardComponent } from './components/skills-dashboard/skills-dashboard.component';
 
 const routes: Routes = [
   {path:'', component: LandingPageComponent},
@@ -15,10 +17,11 @@ const routes: Routes = [
     path: '', canActivate: [authGuard], children: [
       {path:'createProject', component: CreateProjectComponent},
       {path:'projectDashboard', component: ProjectDashboardComponent },
+      {path:'skillsDashboard', component: SkillsDashboardComponent},
+      {path:'discover', component: DiscoverComponent},
     ]
   },
   {path:'home', component: HomeComponent },
-
   {path:'about', component: AboutComponent},
   {path:'login', component: LoginComponent},
   {path:'join', component: RegisterUserComponent }

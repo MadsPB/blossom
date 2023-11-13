@@ -21,4 +21,8 @@ export class ProjectApiService {
   createProject(project:NewProject): Observable<Project> {
     return this.http.post<Project>(this.baseUrl+'/projects', project);
   }
+
+  getAllProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.baseUrl+'/projectsAll').pipe(tap(el=>console.log(el)));
+  }
 }

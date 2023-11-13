@@ -23,6 +23,8 @@ import { LoginComponent } from './components/login/login.component';
 import { FileuploadComponent } from './components/fileupload/fileupload.component';
 import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { SocialPostComponent } from './components/social-post/social-post.component';
+import { SkillsDashboardComponent } from './components/skills-dashboard/skills-dashboard.component';
+import { DiscoverComponent } from './components/discover/discover.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { SocialPostComponent } from './components/social-post/social-post.compon
     LoginComponent,
     FileuploadComponent,
     NewsFeedComponent,
-    SocialPostComponent
+    SocialPostComponent,
+    SkillsDashboardComponent,
+    DiscoverComponent
   ],
   imports: [
     BrowserModule,
