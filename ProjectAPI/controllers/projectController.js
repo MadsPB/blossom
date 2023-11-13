@@ -24,7 +24,21 @@ export const getAllProjectsFromUser = async (ctx, next) => {
   } catch (error)
   {
     console.log(error);
+    ctx.response.body = error;
   }
 }
 
-export default { createProject, getAllProjectsFromUser }
+async function getAllProjects(ctx){
+  try{
+    const projects = await Project.findAll();
+
+    ctx.response.statusCode = 200;
+    ctx.response.body = projects;
+  } catch (error)
+  {
+    console.log(error);
+    ctx.response.body = error;
+  }
+}
+
+export default { createProject, getAllProjectsFromUser,getAllProjects }
