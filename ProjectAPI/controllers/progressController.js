@@ -2,7 +2,7 @@ import Progress from '../models/progress.js'
 import Skill from '../models/skill.js'
 import sequelize from '../db.js';
 
-export const addProgress = async (ctx, next) => {
+export const addProgress = async (ctx) => {
 
   try{
 

@@ -7,7 +7,8 @@ const config = {
   port: process.env.POSTGRES_PORT ?? 5432
 };
 
-const sequelize = new Sequelize('projectdb', process.env.POSTGRES_USER ?? 'mads', process.env.POSTGRES_PASS ?? '', config);
+console.log("PASSWORD: "+process.env.POSTGRES_PASSWORD);
+const sequelize = new Sequelize('projectdb', process.env.POSTGRES_USER ?? 'mads', process.env.POSTGRES_PASSWORD ?? '', config);
 
 try {
   await sequelize.authenticate();

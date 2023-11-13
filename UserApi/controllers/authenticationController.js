@@ -1,4 +1,4 @@
-import User from '../models/user.js';
+import User from '../models/user.js'
 import session from '../models/session.js'
 
 export async function register(req,res) {
@@ -54,15 +54,14 @@ export async function login(req,res) {
     console.log(error);
     res.send(error);
   }
-};
+}
 
 export async function logout(req,res) {
-  const cookie = req.headers;
   const sessionId = getSessionIdFromCookie(req);
   await session.deleteSession(sessionId);
 
   res.send(`logout success`);
-};
+}
 
 export async function auth(req,res) {
 
@@ -78,7 +77,7 @@ export async function auth(req,res) {
 
   userId !== null && await session.extendSession(sessionId);
   res.send({ authorized: true, userId });
-};
+}
 
 function getSessionIdFromCookie(req)
 {

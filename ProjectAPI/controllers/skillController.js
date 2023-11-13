@@ -15,7 +15,7 @@ export const getAll = async (ctx, next) => {
   }
 }
 
-export const getSkillsByName = async (ctx, next) => {
+export const getSkillsByName = async (ctx) => {
 
   try{
     const skills = await Skill.findAll({where: {name: { [Op.iLike]: ctx.request.params.name+'%'}}});
@@ -28,7 +28,7 @@ export const getSkillsByName = async (ctx, next) => {
   }
 }
 
-export const addSkill = async (ctx, next) => {
+export const addSkill = async (ctx) => {
 
   try{
     const skill = await Skill.create({name:ctx.request.params.name});

@@ -7,12 +7,16 @@ services:
     ports: 
       - 3000:3000
     depends_on:
-      - user_session_db
-      - user_db
+      user_session_db:
+        condition: service_started
+      postgres_db:
+        condition: service_healthy
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: mysecretpassword
-      POSTGRES_DB: userdb
-      PGUSER: postgres
+      POSTGRES_HOST: user_db
+      POSTGRES_PORT: 5432
+      REDIS_DB: user_session_db
 
   user_session_db:
     image: redis
@@ -22,13 +26,14 @@ services:
     image: postgres
     restart: always
     volumes:
-      - ./volumes:/var/lib/postgresql/data 
+      - ./volumes/userdb:/var/lib/postgresql/data 
     environment:
       POSTGRES_PASSWORD: mysecretpassword
       POSTGRES_DB: userdb
       PGUSER: postgres
+      POSTGRES_HOST: 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready", "-d", "projectdb"]
+      test: ["CMD-SHELL", "pg_isready", "-d", "userdb"]
       interval: 3s
       timeout: 5s
       retries: 5
@@ -42,8 +47,11 @@ services:
       postgres_db:
         condition: service_healthy
     environment:
-      - POSTGRES_HOST=postgres_db
-      - POSTGRES_PORT=5432
+      POSTGRES_HOST: postgres_db
+      POSTGRES_PORT: 5432
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "mysecretpassword"
+      AUTH_URL: http://user_api:3000
 
   postgres_db:
     image: postgres
@@ -51,7 +59,7 @@ services:
     ports:
       - 5555:5432 #remove for production, used for allowing local development against
     volumes:
-      - ./volumes:/var/lib/postgresql/data 
+      - ./volumes/projectdb:/var/lib/postgresql/data 
     environment:
       POSTGRES_PASSWORD: mysecretpassword
       POSTGRES_DB: projectdb

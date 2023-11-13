@@ -17,5 +17,8 @@
     "redis": "^4.6.10",
     "sequelize": "^6.34.0",
     "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.53.0"
   }
 }
