@@ -20,12 +20,12 @@ export class CreateProjectComponent {
   });
 
   private selectedImage!:Image;
-
+  private uploadedImage?:Image;
   onSubmit()
   {
     console.log(this.createProjectForm.value);
     const value = this.createProjectForm.value;
-    const newProject: NewProject = {title:value.titleControl!.valueOf(), description: value.descriptionControl!.valueOf(), image_url: this.selectedImage.url};
+    const newProject: NewProject = {title:value.titleControl!.valueOf(), description: value.descriptionControl!.valueOf(), image_url: this.uploadedImage?.url ?? this.selectedImage.url};
     this.projectApi.createProject(newProject)
     .subscribe(_=>this.router.navigate(['/projectDashboard']));
     
@@ -35,5 +35,10 @@ export class CreateProjectComponent {
   {
     console.log("here: "+image)
     this.selectedImage = image;
+  }
+
+  handleImageUploaded(url:string)
+  {
+    this.uploadedImage = {id: -1, url: url};
   }
 }

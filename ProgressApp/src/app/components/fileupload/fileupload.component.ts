@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -14,7 +14,8 @@ export class FileuploadComponent {
   });
 
   selectedFile!:File;
-  imageUrl:any = '';
+  imageUrl:string = '';
+  @Output() onImageUploaded = new EventEmitter<string>();
 
   constructor(private httpclient:HttpClient){}
   
@@ -23,7 +24,7 @@ export class FileuploadComponent {
     this.selectedFile = file;
 
     const reader = new FileReader();
-    reader.onload = e => this.imageUrl = reader.result;
+    reader.onload = e => this.imageUrl = reader.result as string;
     reader.readAsDataURL(file);
   }
 
@@ -32,6 +33,11 @@ export class FileuploadComponent {
 
     formData.append('image', this.selectedFile)
 
-    this.httpclient.post<any>('http://localhost:3002/image',formData).subscribe(response=>{console.log(response.url); this.imageUrl = 'http://localhost:8081/files/'+response.url})
+    this.httpclient.post<any>('http://localhost:3002/image',formData).subscribe(response=>
+    {
+      console.log(response.url); 
+      this.imageUrl = 'http://localhost:8081/files/'+response.url
+      this.onImageUploaded.emit(this.imageUrl);
+    })
   }
 }
