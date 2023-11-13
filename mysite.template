@@ -1,0 +1,9 @@
+server {
+  listen 80;
+  location /files {
+    alias /files/;
+    gzip_static on;
+    expires max;
+    add_header Cache-Control private;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "name": "soloproject",
+  "version": "1.0.0",
+  "description": "Track (and share) your progress with your skills and projects.",
+  "main": "index.js",
+  "scripts": {
+    "serveImages": "docker run -v ./mysite.template:/etc/nginx/sites-available/default -v ./ImageApi/files:/usr/share/nginx/html/files/ -p 8081:80 nginx",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

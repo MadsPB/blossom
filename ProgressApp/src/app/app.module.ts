@@ -20,6 +20,7 @@ import { CredentialsInterceptor } from './interceptor/credentials.interceptor';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
+import { FileuploadComponent } from './components/fileupload/fileupload.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { LoginComponent } from './components/login/login.component';
     AboutComponent,
     RegisterUserComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    FileuploadComponent
   ],
   imports: [
     BrowserModule,

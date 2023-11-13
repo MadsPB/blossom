@@ -76,3 +76,20 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  image_upload:
+    build: ImageApi/.
+    ports:
+      - 3005:3002
+    restart: always
+    volumes:
+      - ./volumes/files:/api/files/
+
+  file_server:
+    image: nginx
+    ports: 
+      - 8081:80
+    volumes:
+      - ./volumes/files:/usr/share/nginx/html/files/
+      - ./mysite.template:/etc/nginx/sites-available/default
+  
