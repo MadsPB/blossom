@@ -2,6 +2,38 @@ version: '3.1'
 
 services:
 
+  user_api:
+    build: UserApi/.
+    ports: 
+      - 3000:3000
+    depends_on:
+      - user_session_db
+      - user_db
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: userdb
+      PGUSER: postgres
+
+  user_session_db:
+    image: redis
+    restart: always
+
+  user_db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./volumes:/var/lib/postgresql/data 
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: userdb
+      PGUSER: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready", "-d", "projectdb"]
+      interval: 3s
+      timeout: 5s
+      retries: 5
+      start_period: 5s 
+
   project_api:
     build: ProjectApi/.
     ports:
