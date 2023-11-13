@@ -1,0 +1,23 @@
+{
+  "name": "socialapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@koa/bodyparser": "^5.0.0",
+    "@koa/router": "^12.0.1",
+    "koa": "^2.14.2",
+    "koa2-cors": "^2.0.6",
+    "mongodb": "^6.2.0",
+    "mongoose": "^8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.53.0"
+  }
+}
