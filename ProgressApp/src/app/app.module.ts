@@ -21,6 +21,8 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { FileuploadComponent } from './components/fileupload/fileupload.component';
+import { NewsFeedComponent } from './components/news-feed/news-feed.component';
+import { SocialPostComponent } from './components/social-post/social-post.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import { FileuploadComponent } from './components/fileupload/fileupload.componen
     RegisterUserComponent,
     HomeComponent,
     LoginComponent,
-    FileuploadComponent
+    FileuploadComponent,
+    NewsFeedComponent,
+    SocialPostComponent
   ],
   imports: [
     BrowserModule,

@@ -15,9 +15,10 @@ const routes: Routes = [
     path: '', canActivate: [authGuard], children: [
       {path:'createProject', component: CreateProjectComponent},
       {path:'projectDashboard', component: ProjectDashboardComponent },
-      {path:'home', component: HomeComponent },
     ]
   },
+  {path:'home', component: HomeComponent },
+
   {path:'about', component: AboutComponent},
   {path:'login', component: LoginComponent},
   {path:'join', component: RegisterUserComponent }

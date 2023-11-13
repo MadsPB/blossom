@@ -1,0 +1,15 @@
+<p>social-post works!</p>
+
+<p>{{post?.content}}</p>
+<p>{{post?.publishedAt | dateTransform}}</p>
+<p>{{post?.authorId}}</p>
+
+<p>{{post?.progress}}</p>
+
+<p>Comments:</p>
+<div *ngFor="let comment of post?.comments">
+  <p>{{comment.content}}</p>
+  <p>Created By: {{comment.authorId}}</p>
+  <p>Created At: {{comment.createdAt | dateTransform}}</p>
+</div>
+
