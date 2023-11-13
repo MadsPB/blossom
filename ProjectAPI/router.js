@@ -17,8 +17,9 @@ router.post('/progress',progressController.addProgress );
 router.get('/progress/project/:projectId',progressController.getAllProgressForProject );
 
 router.get('/skills', skillController.getAll );
-router.get('/skills/:name', skillController.getSkillsByName );
-router.post('/skills/:name', skillController.addSkill)
+router.get('/skills/name/:name', skillController.getSkillsByName );
+router.post('/skills/name/:name', skillController.addSkill);
 
+router.get('/skills/user/', skillController.getSkillsForUser);
 
 export default router;
