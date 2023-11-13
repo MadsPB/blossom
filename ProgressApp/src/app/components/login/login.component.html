@@ -1,11 +1,18 @@
-<p>login works!</p>
 
-<form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit($event)">
-  <label>Username</label>
-  <input type="text" placeholder="username.." formControlName="username">
-  <label>Password</label>
-  <input type="password" placeholder="password.." formControlName="password">
-  <button type="submit" [disabled]="!loginFormGroup.valid">login</button>
-</form>
-
-<a routerLink="/join">join us</a>
+<div class="login-container">
+  <img src="../../../assets/seedling2.png">
+  <h2>Sign into your account:</h2>
+  <form [formGroup]="loginFormGroup" (ngSubmit)="onSubmit($event)">
+    <div>
+      <label>Username</label><br>
+      <input type="text" placeholder="username.." formControlName="username">
+    </div>
+    <div>
+      <label>Password</label><br>
+      <input type="password" placeholder="password.." formControlName="password">
+    </div>
+    <button type="submit" [disabled]="!loginFormGroup.valid">login</button>
+  </form>
+  
+  <p>Not a member? <a routerLink="/join">join us</a></p>
+</div>
