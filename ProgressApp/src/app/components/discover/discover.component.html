@@ -1,7 +1,6 @@
-<p>discover works!</p>
-
-<div *ngIf="middle">
-  <div *ngIf="left"><img [src]="left.image_url"></div>
-  <div><img (click)="onNextProject()" [src]="middle.image_url"></div>
-  <div><img [src]="right.image_url"></div>
+<div class="picture-container" *ngIf="middle">
+  <div class="middle"><h2  class="title">{{middle.title}}</h2><img (click)="onNextProject()" [src]="middle.image_url"></div>
+  <div class="left sideImage" *ngIf="left"><img [src]="left.image_url"></div>
+  <div class="right sideImage"><img [src]="right.image_url"></div>
+  <div class="description">{{middle.description}}</div>
 </div>
