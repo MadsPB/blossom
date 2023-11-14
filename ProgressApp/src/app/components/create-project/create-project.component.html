@@ -1,15 +1,15 @@
 <header>
-  <h1>Create <br> a new Project</h1>
+  <h2><span>Create</span> <br> a new Project</h2>
 </header>
 
 
 <form [formGroup]="createProjectForm" (ngSubmit)="onSubmit()">
-  <label>Title
+  <label>Add a Title:
   </label>
   <input type="text" placeholder="Add Title.."  formControlName="titleControl">
   <label>Select thumbnail</label>
-  <app-thumbnail-picker (imageSelected)="onImageSelected($event)"></app-thumbnail-picker>
-  <app-fileupload (onImageUploaded)="handleImageUploaded($event)"></app-fileupload>
+  <app-thumbnail-picker [thumbnailImages]="imageSelection" (imageSelected)="onImageSelected($event)"></app-thumbnail-picker>
+  <app-fileupload (onImageRead)="onImageRead($event)" (onImageUploaded)="handleImageUploaded($event)"></app-fileupload>
   <label>Description</label>
   <textarea placeholder="Add Project Description.." formControlName="descriptionControl"></textarea>
   <button [disabled]="!createProjectForm.valid">Create</button>

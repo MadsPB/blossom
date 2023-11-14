@@ -16,6 +16,7 @@ export class FileuploadComponent {
   selectedFile!:File;
   imageUrl:string = '';
   @Output() onImageUploaded = new EventEmitter<string>();
+  @Output() onImageRead = new EventEmitter<any>();
 
   constructor(private httpclient:HttpClient){}
   
@@ -24,8 +25,12 @@ export class FileuploadComponent {
     this.selectedFile = file;
 
     const reader = new FileReader();
-    reader.onload = e => this.imageUrl = reader.result as string;
+    reader.onload = e => {
+      this.imageUrl = reader.result as string;
+      this.onImageRead.emit({imageUrl:this.imageUrl, file:file});
+    };
     reader.readAsDataURL(file);
+    
   }
 
   onSubmit(e:any){

@@ -1,14 +1,5 @@
-<p>fileupload works!</p>
-
-<form>
-
-</form>
-
 <form [formGroup]="uploadFormGroup" (ngSubmit)="onSubmit($event)">
   <label>Upload Image
   </label>
   <input type="file" accept="image/*" name="image" (change)="uploadFile($event)" formControlName="imageControl">
-  <button [disabled]="!uploadFormGroup.valid">Create</button>
 </form>
-
-<img [src]="imageUrl">

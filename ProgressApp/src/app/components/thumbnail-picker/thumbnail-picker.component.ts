@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Image } from 'src/app/interfaces/image';
 
 @Component({
@@ -7,7 +7,7 @@ import { Image } from 'src/app/interfaces/image';
   styleUrls: ['./thumbnail-picker.component.css']
 })
 export class ThumbnailPickerComponent {
-  thumbnailImages = [{id: 1, url:'../../../assets/website.png'},{id: 2, url:'../../../assets/music.jpg'},{id: 3, url:'../../../assets/programming.jpg'},{id: 4, url:'../../../assets/design.jpg'}];
+  @Input() thumbnailImages:Image[] = []
   selectedImage = this.thumbnailImages[0];
   @Output() imageSelected = new EventEmitter<Image>();
 

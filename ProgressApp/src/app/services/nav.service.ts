@@ -6,6 +6,6 @@ import { Subject } from 'rxjs';
 })
 export class NavService {
 
-  nav$:Subject<string> = new Subject<string>();
+   nav$:Subject<string> = new Subject<string>();
   constructor() { }
 }
