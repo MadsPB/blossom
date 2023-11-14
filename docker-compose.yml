@@ -80,7 +80,7 @@ services:
   image_upload:
     build: ImageApi/.
     ports:
-      - 3005:3002
+      - 3002:3002
     restart: always
     volumes:
       - ./volumes/files:/api/files/
@@ -93,3 +93,24 @@ services:
       - ./volumes/files:/usr/share/nginx/html/files/
       - ./mysite.template:/etc/nginx/sites-available/default
   
+  social_api:
+    build: SocialApi/.
+    restart: always
+    ports:
+      - 3004:3004
+    depends_on:
+      social_db:
+        condition: service_started
+    environment:
+      MONGO_HOST: root:example@social_db
+      AUTH_URL: http://user_api:3000
+      MONGO_ROOT_USERNAME: root
+      MONGO_ROOT_PASSWORD: example
+
+  social_db:
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    

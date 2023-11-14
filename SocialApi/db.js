@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://127.0.0.1:27017/socialdb')
+const target = process.env.MONGO_HOST ??  "127.0.0.1";
+mongoose.connect(`mongodb://${target}:27017/socialdb${process.env.MONGO_HOST ? '?authSource=admin' : ''}`)
   .then(() => console.log('Connected!'));
 
 export default mongoose;
