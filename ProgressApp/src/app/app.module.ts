@@ -25,6 +25,7 @@ import { NewsFeedComponent } from './components/news-feed/news-feed.component';
 import { SocialPostComponent } from './components/social-post/social-post.component';
 import { SkillsDashboardComponent } from './components/skills-dashboard/skills-dashboard.component';
 import { DiscoverComponent } from './components/discover/discover.component';
+import { UpperNavBarComponent } from './components/upper-nav-bar/upper-nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { DiscoverComponent } from './components/discover/discover.component';
     NewsFeedComponent,
     SocialPostComponent,
     SkillsDashboardComponent,
-    DiscoverComponent
+    DiscoverComponent,
+    UpperNavBarComponent
   ],
   imports: [
     BrowserModule,
