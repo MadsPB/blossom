@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { NewProgress, Progress } from 'src/app/interfaces/progress';
 import { Project } from 'src/app/interfaces/project';
@@ -7,6 +7,7 @@ import { ProjectService } from 'src/app/services/project.service';
 import { Observable, debounce, min, debounceTime, distinctUntilChanged, map, switchMap, tap, filter } from 'rxjs';
 import { SkillApiService } from 'src/app/services/skill-api.service';
 import { Skill } from 'src/app/interfaces/Skill';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-project-display',
@@ -21,17 +22,49 @@ export class ProjectDisplayComponent {
   foundSkills:Skill[] = [];
   assignedSkills:Skill[] = [];
   currentTerm:string = '';
-  constructor(private projectService: ProjectService, private progresApi:ProgressApiService, private skillsApi:SkillApiService){}
+  constructor(private projectService: ProjectService, private progresApi:ProgressApiService, private skillsApi:SkillApiService){
+
+  //   this.projectService.selectedProject$
+  //   .pipe(
+  //     tap(project => this.displayedProject=project ), 
+  //     tap(project => console.log("displayed project: "+this.displayedProject) ), 
+
+  //     switchMap(project=> this.progresApi.getProgress(project.id)))
+  //   .subscribe(progress => this.progress=progress.sort((a,b)=>a.createdAt > b.createdAt ? -1 : 1));
+
+  // this.skillControl.valueChanges.pipe( 
+  //     filter(term=> (term ?? '').length > 2 ), 
+  //     debounceTime(300), 
+  //     distinctUntilChanged(), 
+  //     tap(term=> this.currentTerm = term ?? '' ), 
+  //     switchMap(term => this.skillsApi.getAllSkills(term ?? '')))
+  //   .subscribe(skills=> this.foundSkills = [...skills, {name:this.currentTerm}] );
+
+  }
 
   ngOnInit()
   {
-    this.projectService.selectedProject$
-      .pipe(
-        tap(project => this.displayedProject=project ), 
-        switchMap(project=> this.progresApi.getProgress(project.id)))
-      .subscribe(progress => this.progress=progress.sort((a,b)=>a.createdAt > b.createdAt ? -1 : 1));
+    this.displayedProject = this.projectService.project;
 
-    this.skillControl.valueChanges.pipe( filter(term=> (term ?? '').length > 2 ), debounceTime(300), distinctUntilChanged(), tap(term=> this.currentTerm = term ?? '' ), switchMap(term => this.skillsApi.getAllSkills(term ?? ''))).subscribe(skills=> this.foundSkills = [...skills, {name:this.currentTerm}] );
+    if(!this.displayedProject)
+      return;
+    
+    this.progresApi.getProgress(this.displayedProject.id)
+      .subscribe(progress => 
+        {
+          this.progress=progress.sort((a,b)=>a.createdAt > b.createdAt ? -1 : 1);
+          console.log("subscription "+this.displayedProject)
+        });
+
+    this.skillControl.valueChanges.pipe( 
+      filter(term=> (term ?? '').length > 2 ), 
+      debounceTime(300), 
+      distinctUntilChanged(), 
+      tap(term=> this.currentTerm = term ?? '' ), 
+      switchMap(term => this.skillsApi.getAllSkills(term ?? '')))
+      .subscribe(skills=> this.foundSkills = [...skills, {name:this.currentTerm}] );
+
+    console.log("ngInit: + " +this.displayedProject);
   }
 
   onCommitProgress()

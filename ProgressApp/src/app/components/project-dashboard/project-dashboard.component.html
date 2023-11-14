@@ -1,8 +1,8 @@
 
 
 <div class="grid">
-  <app-project-list-item 
-    (click)="onSelect(project)" 
+  <app-project-list-item
+  (click)="onSelect(project)" 
 *ngFor="let project of projects" 
 [project]="project">
 </app-project-list-item>

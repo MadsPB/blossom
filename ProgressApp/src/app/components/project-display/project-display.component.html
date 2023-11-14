@@ -1,6 +1,6 @@
-<div *ngIf="displayedProject">
-  <img [src]="displayedProject.image_url">
+<div class="project-container" *ngIf="displayedProject">
   <h2>{{displayedProject.title}}</h2>
+  <img [src]="displayedProject.image_url">
   <h3>Desciption</h3>
   <p>{{displayedProject.description}}</p>
   <h3>Progress</h3>
@@ -14,8 +14,6 @@
     </div>
   </div>
   <app-progress *ngFor="let singleProgress of progress" [progress]="singleProgress"></app-progress>
-  
-
 </div>
 
 

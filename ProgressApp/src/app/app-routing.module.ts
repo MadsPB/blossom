@@ -10,15 +10,17 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { DiscoverComponent } from './components/discover/discover.component';
 import { SkillsDashboardComponent } from './components/skills-dashboard/skills-dashboard.component';
+import { ProjectDisplayComponent } from './components/project-display/project-display.component';
 
 const routes: Routes = [
   {path:'', component: LandingPageComponent},
   {
     path: '', canActivate: [authGuard], children: [
-      {path:'createProject', component: CreateProjectComponent},
-      {path:'projectDashboard', component: ProjectDashboardComponent },
-      {path:'skillsDashboard', component: SkillsDashboardComponent},
-      {path:'discover', component: DiscoverComponent},
+      {path:'createProject', component: CreateProjectComponent, data:{title:"Create"}},
+      {path:'projectDashboard', component: ProjectDashboardComponent, data:{title:"Projects"}},
+      {path:'skillsDashboard', component: SkillsDashboardComponent, data:{title:"Skills"}},
+      {path:'discover', component: DiscoverComponent, data:{title:"Discover"}},
+      {path:'project', component: ProjectDisplayComponent, data:{title:"Project"}},
     ]
   },
   {path:'home', component: HomeComponent },
@@ -28,7 +30,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

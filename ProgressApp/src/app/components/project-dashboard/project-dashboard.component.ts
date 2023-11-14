@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Project } from 'src/app/interfaces/project';
 import { ProjectApiService } from 'src/app/services/project-api.service';
 import { ProjectService } from 'src/app/services/project.service';
@@ -10,7 +11,7 @@ import { ProjectService } from 'src/app/services/project.service';
 })
 
 export class ProjectDashboardComponent {
-  constructor(private projectApi:ProjectApiService, private projectService:ProjectService){}
+  constructor(private projectApi:ProjectApiService, private projectService:ProjectService, private router:Router){}
   projects:any[] = [];
   selectedProject?:Project;
 
@@ -23,6 +24,7 @@ export class ProjectDashboardComponent {
 
   onSelect(project:Project){
     this.selectedProject = project;
-    this.projectService.selectProject(project);
+    this.projectService.setProject(project);
+    this.router.navigate(['/project'])
   }
 }

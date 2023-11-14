@@ -1,12 +1,17 @@
 :host {
   
+  border-left: 1px dashed rgb(238, 238, 238);
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
   padding: 20px;
   width: 60%;
   min-height: 800px;
   display:flex;
-  background-color: blueviolet;
+}
+
+.project-container {
+  
 }
 
 :host div {
@@ -17,13 +22,15 @@
 }
 :host img {
   /* padding: 20px 20px 0 20px; */
+  max-width: 600px;
   width:100%;
   align-self: center;
+  border-radius: 15px;
 }
 
 :host h2 {
   margin-top: 20px;
-  align-self: center;
+  /* align-self: center; */
   text-align: center;
 }
 
@@ -32,13 +39,18 @@
 }
 
 :host p {
-  background-color: blanchedalmond;
+  /* background-color: blanchedalmond; */
+  background: linear-gradient(75deg , #c77a7152, #8d918951);
+  border: 1px solid #c27e72;
+  border-radius: 15px;
   min-height: 200px;
   padding: 20px;
 }
 
 :host .skills {
-  background-color: blanchedalmond;
+  /* background-color: blanchedalmond; */
+  border: 1px solid #c27e72;
+
   padding: 5px;
   min-height: 100px;
 
@@ -60,3 +72,12 @@
   background-color: #8BBF8A;
   color:white;
 }
+
+textarea {
+  border: 0;
+}
+
+input {
+  border: 0
+}
+
