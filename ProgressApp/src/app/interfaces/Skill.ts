@@ -14,5 +14,6 @@ export interface ProgressExt {
     projectId: number,
     comment: string,
     contributtorId: number,
-    createdAt: Date
+    createdAt: Date,
+    skills:Skill[]
 }

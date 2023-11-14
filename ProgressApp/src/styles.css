@@ -1,9 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 
+@font-face {
+  font-family: 'RoundRegular';
+  src: url('assets/typo-round/Typo_Round_Regular_Demo.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
 }
 
 body {
+}
+
+:root {
+  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }

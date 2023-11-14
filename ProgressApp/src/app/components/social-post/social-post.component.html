@@ -1,15 +1,29 @@
-<p>social-post works!</p>
-
-<p>{{post?.content}}</p>
-<p>{{post?.publishedAt | dateTransform}}</p>
-<p>{{post?.authorId}}</p>
-
-<p>{{post?.progress}}</p>
-
-<p>Comments:</p>
-<div *ngFor="let comment of post?.comments">
-  <p>{{comment.content}}</p>
-  <p>Created By: {{comment.authorId}}</p>
-  <p>Created At: {{comment.createdAt | dateTransform}}</p>
+<div class="post">
+  <div class="userpost">
+    <p>{{post?.content}}</p>
+    <div class="userpost-meta">
+      <p>User: {{post?.authorId}}</p>
+      <p>{{post?.publishedAt | dateTransform}}</p>
+    </div>
+  </div>
+  
+  <div class="progress">
+    <p>{{post?.progress}}</p>
+  </div>
+  
+  <p>Comments:</p>
+  <div class="comment" *ngFor="let comment of post?.comments">
+    <p>{{comment.content}}</p>
+    <div class="userpost-meta">
+      <p>User: {{comment.authorId}}</p>
+      <p>{{comment.createdAt | dateTransform}}</p>
+    </div>
+  </div>
+  <div class="comment">
+    <textarea placeholder="Your dedication is inspiring!.."></textarea>
+    <button>Send</button>
+  </div>
 </div>
+<div class="inBetween"></div>
+
 

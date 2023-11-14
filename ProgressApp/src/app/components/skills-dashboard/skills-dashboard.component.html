@@ -1,4 +1,9 @@
-<p>skills-dashboard works!</p>
 
 
-<p *ngFor="let skill of skills">#{{skill.name}} progress amount: {{skill.Progresses.length}}</p>
+<div class="skill-scroll">
+  <div class="skill" (click)="onSkillSelect(skill)" *ngFor="let skill of skills"><p>#{{skill.name}} - {{skill.Progresses.length}}</p></div>
+</div>
+
+<div class="progress-list">
+  <app-progress class="progress" *ngFor="let progress of progress" [progress]="progress">{{progress.comment}}</app-progress>
+</div>
