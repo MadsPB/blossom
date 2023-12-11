@@ -38,7 +38,8 @@ input {
 
 textarea {
   border: 1px solid #c27e72;
-  border-radius: 5px;;
+  border-radius: 5px;
+  min-height: 150px;
 }
 
 label {
