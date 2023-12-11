@@ -1,6 +1,9 @@
-# progress
+# Blossom
 
-Track (and share) your progress with your skills and projects.
+Track the growth of your skills and projects.
+Get encouragement from friends by sharing your progress.
+
+![App](./Design/blossom.gif)
 
 ## Project description
 
